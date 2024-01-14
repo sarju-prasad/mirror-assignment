@@ -71,6 +71,7 @@ remaining Product->
         "__v": 0
     }
 ]  
+
 4-> updatig the product
 input->
 {
@@ -90,7 +91,51 @@ o/p-> Product is updated
     },
 
 
-
+5->(i)-->Filter the Product using description
+http://localhost:3200/api/products/filter
+input-> {
+"description":"Created by apple"
+}
+o/p
+{
+    "0": {
+        "_id": "65a3654a20087d225607443e",
+        "name": "Andriod Phone",
+        "description": "Created by apple",
+        "price": 12000,
+        "__v": 0
+    }
+}
+(ii)->Using Product Name
+input->{
+    "productName":"book"
+}
+o/p->
+{
+    "0": {
+        "_id": "65a2bf88da78cce581566edb",
+        "name": "book",
+        "description": "seller",
+        "price": 100,
+        "__v": 0
+    }
+}
+(iii)-> Filter the product using Varaint Name
+input-->{
+     "variantName":"varaint3"
+}
+o/p
+[
+    {
+        "_id": "65a2610e38ee7ed37f1d1829",
+        "sku": "sku2001",
+        "additionalPrice": 2,
+        "stockCount": 211,
+        "productId": "65a13d12386c1368abe90cff",
+        "__v": 0,
+        "name": "varaint3"
+    }
+]
 
 
 
