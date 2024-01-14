@@ -106,6 +106,8 @@ o/p
         "__v": 0
     }
 }
+
+
 (ii)->Using Product Name
 input->{
     "productName":"book"
@@ -120,6 +122,8 @@ o/p->
         "__v": 0
     }
 }
+
+
 (iii)-> Filter the product using Varaint Name
 input-->{
      "variantName":"varaint3"
