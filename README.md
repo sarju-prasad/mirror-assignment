@@ -1,4 +1,6 @@
 # mirror-assignment
+#First install all the dependencies using-> npm install
+#then run the project usnig command-> npm start
 1-> Add the product in the ProductModel
 http://localhost:3200/api/products
 inputs-> {
