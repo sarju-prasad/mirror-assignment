@@ -62,35 +62,37 @@ class ProductRepository {
     }
   }
   //filter the product using Product Name ,Varaint Name,price and description
-  async filter(filterProduct) {
+    async filter(filterProduct) {
     try {
-      const obj={}
-      if(filterProduct.description){
-        obj.description=filterProduct.description
+      const product = {};
+      if (filterProduct.description) {
+        product.description = filterProduct.description;
       }
-      if(filterProduct.productName){
-        obj.productName=filterProduct.productName
+      if (filterProduct.productName) {
+        product.name = filterProduct.productName;
       }
-      const productResult = await ProductModel.find(obj);
-      const variantResult = await VariantModel.find({name:filterProduct.variantName});
-      console.log("Product result->",productResult);
-
-      console.log("varian readoih->",variantResult);
-      if (productResult.length > 0) {
-        return {...productResult};
+      const variant = {};
+      if (filterProduct.variantName) {
+        variant.name = filterProduct.variantName;
       }
   
-      if (variantResult.length > 0) {
-        return {...variantResult};
+      // Search for variants first, if variantName is provided
+      if (Object.keys(variant).length > 0) {
+        const variantResult = await VariantModel.find(variant);
+        return variantResult;
       }
   
-      return { products, variants}; 
+      // If variant search did not yield results, search for products
+      if (Object.keys(product).length > 0) {
+        const productResult = await ProductModel.find(product);
+        return productResult;
+      }
+      return "Product is not found";
     } catch (err) {
       console.error(err);
       throw new ApplicationError("Something went wrong with the database", 500);
     }
   }
-  
 
   //Deleting one product
   async delete(productId) {
